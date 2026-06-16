@@ -1,16 +1,18 @@
-# React + Vite
+# Online Market Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly interactive, responsive, and multilingual marketplace frontend built with React and Vite. This application operates fully offline-ready with local asset configurations.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+*   **Custom Translation Engine (Offline):** Dynamic file-based localization system supporting Turkmen (TK), Russian (RU), and English (EN) without external npm packages.
+*   **Top Bar & Main Navbar:** Implements system theme toggles, dynamic date calendars, and live weather forecasts driven by the Open-Meteo API.
+*   **Instagram-Style Stories Slider:** Timed circle story slots showing active profiles with automated 5-second progress-bar switches.
+*   **Auto-Sliding Promotional Banners:** Custom main home banner carousel with mouse pause-on-hover controls.
+*   **YouTube-Style Media Cards:** Catalog layouts with hover-triggered dynamic video previews, seller shop badges, and view counters.
+*   **Responsive layouts:** Mobile bottom sticky bars and pop-up category overlay grids.
 
-## React Compiler
+## Local Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies:
+   ```bash
+   npm install
