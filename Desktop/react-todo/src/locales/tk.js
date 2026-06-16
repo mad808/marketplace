@@ -15,7 +15,7 @@ export const tk = {
     news: "Habarlar",
     change_location: "Ýeri üýtgetmek",
     search_placeholder: "Harytlary gözle..",
-    
+
     "messages.Products": "Harytlar",
     "messages.Brands": "Brendler",
     "messages.Vacancies": "Iş ýerleri",
@@ -29,5 +29,13 @@ export const tk = {
 
     stories_title: "Aktiw dükanlar",
     close: "Ýap",
-    filter_all: "Ählisi"
+    filter_all: "Ählisi",
+
+    "messages.QuickLinks": "Çalt sargytlar",
+    "messages.Market categories": "Söwda bölümleri",
+    "messages.ContactInfo": "Habarlaşmak üçin",
+    "messages.Phone": "Telefon",
+    "messages.Email": "E-poçta",
+    "messages.Address": "Salgy",
+    "messages.DefaultFooterText": "Ulaglary, harytlary, dükanlary we sargytlary aňsat gurnamaga ýardam berýän söwda meýdançasy."
 };

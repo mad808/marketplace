@@ -29,5 +29,13 @@ export const en = {
 
     stories_title: "Active Shops",
     close: "Close",
-    filter_all: "All"
+    filter_all: "All",
+
+    "messages.QuickLinks": "Quick Links",
+    "messages.Market categories": "Market Categories",
+    "messages.ContactInfo": "Contact Info",
+    "messages.Phone": "Phone",
+    "messages.Email": "Email",
+    "messages.Address": "Address",
+    "messages.DefaultFooterText": "Ashgabat city's premier shopping, vehicles, and auto-parts catalog platform."
 };

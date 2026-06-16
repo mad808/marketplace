@@ -1062,3 +1062,203 @@ body {
     right: 10px;
   }
 }
+
+/* ==========================================================================
+   12. LARAVEL STYLE FOOTER SECTION (DESKTOP MODE)
+   ========================================================================== */
+.footer-laravel {
+  background-color: var(--bg-card) !important;
+  border-top: 1px solid var(--border-color) !important;
+  font-size: 0.88rem;
+  margin-top: 4rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+.footer-column.col-large {
+  grid-column: span 1;
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-column.col-large {
+    grid-column: span 1.5;
+  }
+}
+
+.footer-brand-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-logo) !important;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.5px;
+}
+
+.footer-description-text {
+  color: var(--text-secondary) !important;
+  line-height: 1.5;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Rounded social circle items */
+.footer-social-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-link-item {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-bg) !important;
+  border-radius: 50%;
+  color: var(--text-secondary) !important;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.social-link-item:hover {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
+
+.footer-badges-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.app-badge-image {
+  height: 40px;
+  object-fit: contain;
+  transition: opacity 0.2s;
+}
+
+.app-badge-image:hover {
+  opacity: 0.85;
+}
+
+/* Navigation lists */
+.footer-header-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-main) !important;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: 0.5px;
+}
+
+.footer-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link-list li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-link-anchor {
+  color: var(--text-secondary) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-link-anchor:hover {
+  color: var(--accent-color) !important;
+  transform: translateX(4px);
+}
+
+.mt-brand-link {
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.6rem;
+}
+
+/* Contact information list */
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list-item {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-icon {
+  font-size: 1rem;
+  color: var(--accent-color) !important;
+  margin-top: 3px;
+}
+
+.contact-label-text {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-secondary) !important;
+  margin-bottom: 0.15rem;
+}
+
+.contact-value-anchor {
+  color: var(--text-main) !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.contact-value-span {
+  color: var(--text-main) !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* Bottom copyright sub-bar */
+.footer-bottom-bar {
+  background-color: var(--btn-bg) !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding: 1rem 0;
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.footer-copyright-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+}
+
+/* Hide standard PC footer on mobile screens */
+@media (max-width: 768px) {
+  .footer-laravel {
+    display: none !important;
+  }
+}

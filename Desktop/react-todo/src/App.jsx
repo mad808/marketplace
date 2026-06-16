@@ -5,6 +5,7 @@ import BannerSlider from './components/marketplace/BannerSlider';
 import Stories from './components/marketplace/Stories';
 import YoutubeStyleCard from './components/marketplace/YoutubeStyleCard';
 import PromoBanner from './components/common/PromoBanner';
+import Footer from './components/layout/Footer';
 import './App.css';
 
 // Mock items array
@@ -138,6 +139,8 @@ function App() {
           />
         ))}
       </main>
+
+      <Footer />
     </div>
   );
 }

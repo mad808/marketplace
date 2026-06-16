@@ -29,5 +29,13 @@ export const ru = {
 
     stories_title: "Активные магазины",
     close: "Закрыть",
-    filter_all: "Все"
+    filter_all: "Все",
+
+    "messages.QuickLinks": "Быстрые ссылки",
+    "messages.Market categories": "Категории маркета",
+    "messages.ContactInfo": "Контакты",
+    "messages.Phone": "Телефон",
+    "messages.Email": "Эл. почта",
+    "messages.Address": "Адрес",
+    "messages.DefaultFooterText": "Платформа для легкого поиска и заказа автомобилей, автозапчастей и повседневных товаров."
 };
