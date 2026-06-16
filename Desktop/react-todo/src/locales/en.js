@@ -1,0 +1,33 @@
+export const en = {
+    welcome: "Welcome",
+    hi: "Hi",
+    login_register: "Login / Register",
+    login: "Login",
+    register: "Register",
+    admin_panel: "Admin Panel",
+    my_orders: "My Orders",
+    my_profile: "My Profile",
+    logout: "Logout",
+    sections: "Sections",
+    home_page: "Home Page",
+    cart: "Cart",
+    favorites: "Favorites",
+    news: "News",
+    change_location: "Change Location",
+    search_placeholder: "Search products..",
+
+    "messages.Products": "Products",
+    "messages.Brands": "Brands",
+    "messages.Vacancies": "Vacancies",
+    "messages.Ads": "Ads",
+    "messages.Cars": "Cars",
+    "messages.CarParts": "Car Parts",
+    "messages.Shops": "Shops",
+    "messages.Restaurants": "Restaurants",
+    "messages.Services": "Services",
+    "messages.News": "News",
+
+    stories_title: "Active Shops",
+    close: "Close",
+    filter_all: "All"
+};
