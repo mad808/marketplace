@@ -37,5 +37,11 @@ export const ru = {
     "messages.Phone": "Телефон",
     "messages.Email": "Эл. почта",
     "messages.Address": "Адрес",
-    "messages.DefaultFooterText": "Платформа для легкого поиска и заказа автомобилей, автозапчастей и повседневных товаров."
+    "messages.DefaultFooterText": "Платформа для легкого поиска и заказа автомобилей, автозапчастей и повседневных товаров.",
+    "messages.FirstName": "Имя",
+    "messages.LastName": "Фамилия",
+    "messages.PhoneOrEmail": "Телефон или эл. почта",
+    "messages.Password": "Пароль",
+    "messages.ConfirmPassword": "Подтвердите пароль",
+    "messages.RememberMe": "Запомнить меня"
 };

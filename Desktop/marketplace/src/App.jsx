@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
-import BannerSlider from './components/marketplace/BannerSlider';
 import Stories from './components/marketplace/Stories';
+import BannerSlider from './components/marketplace/BannerSlider';
 import YoutubeStyleCard from './components/marketplace/YoutubeStyleCard';
 import PromoBanner from './components/common/PromoBanner';
 import Footer from './components/layout/Footer';
+import Auth from './pages/Auth'; // <-- Import Auth page
 import './App.css';
 
-// Mock items array
 const MOCK_ITEMS = [
   {
     id: 1,
@@ -75,6 +75,16 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('All');
 
+  // Page Router state ('home' or 'auth')
+  const [currentPage, setCurrentPage] = useState('home');
+
+  // Shared Global User State
+  const [user, setUser] = useState({
+    first_name: "Yhlas",
+    last_name: "Meredow",
+    role: "admin"
+  });
+
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('appTheme') || 'light';
   });
@@ -101,6 +111,12 @@ function App() {
     }
   };
 
+  // Auth triggers
+  const handleLoginSuccess = (loggedInUser) => {
+    setUser(loggedInUser);
+    setCurrentPage('home'); // Redirect back to marketplace
+  };
+
   const filteredItems = MOCK_ITEMS.filter(item => {
     const matchesCategory = activeFilter === 'All' || item.category === activeFilter;
     const matchesLocation = selectedLocation === 'All' || item.location === selectedLocation;
@@ -123,22 +139,34 @@ function App() {
         setActiveFilter={setActiveFilter}
         theme={theme}
         toggleTheme={toggleTheme}
+        user={user}              // <-- Pass global user state
+        setUser={setUser}        // <-- Pass setter to logout from navbar
+        setCurrentPage={setCurrentPage} // <-- Trigger auth redirection
       />
 
-      <BannerSlider />
+      {/* State-driven router view */}
+      {currentPage === 'auth' ? (
+        <Auth
+          onLoginSuccess={handleLoginSuccess}
+          onCancel={() => setCurrentPage('home')}
+        />
+      ) : (
+        <>
+          <Stories />
+          <BannerSlider />
 
-      <Stories />
-
-      <main className="yt-grid">
-        {filteredItems.map(item => (
-          <YoutubeStyleCard
-            key={item.id}
-            item={item}
-            isFavorite={favorites.includes(item.id)}
-            onToggleFavorite={handleToggleFavorite}
-          />
-        ))}
-      </main>
+          <main className="yt-grid">
+            {filteredItems.map(item => (
+              <YoutubeStyleCard
+                key={item.id}
+                item={item}
+                isFavorite={favorites.includes(item.id)}
+                onToggleFavorite={handleToggleFavorite}
+              />
+            ))}
+          </main>
+        </>
+      )}
 
       <Footer />
     </div>

@@ -37,5 +37,11 @@ export const en = {
     "messages.Phone": "Phone",
     "messages.Email": "Email",
     "messages.Address": "Address",
-    "messages.DefaultFooterText": "Ashgabat city's premier shopping, vehicles, and auto-parts catalog platform."
+    "messages.DefaultFooterText": "Ashgabat city's premier shopping, vehicles, and auto-parts catalog platform.",
+    "messages.FirstName": "First Name",
+    "messages.LastName": "Last Name",
+    "messages.PhoneOrEmail": "Phone or Email",
+    "messages.Password": "Password",
+    "messages.ConfirmPassword": "Confirm Password",
+    "messages.RememberMe": "Remember Me"
 };

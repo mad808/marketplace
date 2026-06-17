@@ -28,15 +28,12 @@ function Navbar({
   activeFilter,
   setActiveFilter,
   theme,
-  toggleTheme
+  toggleTheme,
+  user,              // <-- Converted to props
+  setUser,            // <-- Converted to props
+  setCurrentPage     // <-- Converted to props
 }) {
   const { language, changeLanguage, t } = useLanguage();
-
-  const [user, setUser] = useState({
-    first_name: "Yhlas",
-    last_name: "Meredow",
-    role: "admin"
-  });
 
   const [weatherTemp, setWeatherTemp] = useState('--');
   const [weatherIcon, setWeatherIcon] = useState('bi-cloud-sun');
@@ -48,7 +45,7 @@ function Navbar({
   const langRef = useRef(null);
   const userRef = useRef(null);
 
-  // Standardized categories array matching your Blade navbar configuration
+  // Categories list
   const navItems = [
     { title: 'messages.Products', icon: 'grid', category: 'All' },
     { title: 'messages.Brands', icon: 'patch-check', category: 'Brands' },
@@ -79,7 +76,7 @@ function Navbar({
     setCurrentDate(new Date().toLocaleDateString(localeMap[language] || 'tr-TR', options));
   }, [language]);
 
-  // Open-Meteo current weather fetching
+  // Weather fetching
   useEffect(() => {
     const fetchWeather = async () => {
       const coords = locationCoordinates[selectedLocation] || locationCoordinates['Ashgabat'];
@@ -123,7 +120,6 @@ function Navbar({
       <div className="top-bar-laravel">
         <div className="top-bar-container">
           <div className="top-bar-left">
-            {/* Live Weather dropdown selector */}
             <div className="weather-widget-laravel">
               <i className={`bi ${weatherIcon} text-blue fs-6`}></i>
               <span className="fw-bold">{weatherTemp} °C</span>
@@ -141,7 +137,6 @@ function Navbar({
               <i className="bi bi-caret-down-fill small opacity-50" style={{ fontSize: '0.6rem' }}></i>
             </div>
 
-            {/* Dynamic system date */}
             <div className="date-widget-laravel d-none d-sm-block">
               <i className="bi bi-calendar-event text-blue pe-1"></i>
               <span>{currentDate}</span>
@@ -149,12 +144,10 @@ function Navbar({
           </div>
 
           <div className="top-bar-right">
-            {/* Theme switcher */}
             <button className="theme-toggle-btn-laravel" onClick={toggleTheme}>
               <i className={`bi ${theme === 'light' ? 'bi-moon-stars-fill' : 'bi-sun-fill'}`}></i>
             </button>
 
-            {/* Language dropdown switcher */}
             <div className="dropdown-laravel" ref={langRef}>
               <button className="dropdown-toggle-laravel" onClick={() => setIsLangOpen(!isLangOpen)}>
                 <img
@@ -180,13 +173,13 @@ function Navbar({
 
             <span className="divider">|</span>
 
-            {/* User identification login text */}
+            {/* Navigates to custom login/register page if clicked */}
             {user ? (
               <span className="text-brand fw-bold">
                 {t('hi')}, {user.first_name}
               </span>
             ) : (
-              <span className="text-brand fw-bold cursor-pointer" onClick={() => alert('Login redirected')}>
+              <span className="text-brand fw-bold cursor-pointer" onClick={() => setCurrentPage('auth')}>
                 {t('login_register')}
               </span>
             )}
@@ -198,7 +191,6 @@ function Navbar({
       <nav className="main-navbar-laravel">
         <div className="main-navbar-container">
 
-          {/* Mobile Layout Row */}
           <div className="mobile-header-row">
             <a href="/" className="mobile-logo">OM</a>
             <div className="mobile-search">
@@ -214,9 +206,8 @@ function Navbar({
             </button>
           </div>
 
-          {/* Desktop Layout Row */}
           <div className="desktop-header-row">
-            <a href="/" className="desktop-logo">ONLINE MARKET</a>
+            <a href="/" className="desktop-logo" onClick={(e) => { e.preventDefault(); setCurrentPage('home'); }}>ONLINE MARKET</a>
 
             <div className="desktop-search-container">
               <input
@@ -230,7 +221,6 @@ function Navbar({
             </div>
 
             <div className="desktop-actions">
-              {/* Notification icon */}
               <i className="bi bi-bell icon-btn"></i>
 
               {/* User Dropdown */}
@@ -265,10 +255,10 @@ function Navbar({
                       </>
                     ) : (
                       <>
-                        <li className="menu-item fw-bold" onClick={() => { setUser({ first_name: "Demo", last_name: "User", role: "client" }); setIsUserOpen(false); }}>
+                        <li className="menu-item fw-bold" onClick={() => { setCurrentPage('auth'); setIsUserOpen(false); }}>
                           <i className="bi bi-box-arrow-in-right"></i> {t('login')}
                         </li>
-                        <li className="menu-item fw-bold" onClick={() => setIsUserOpen(false)}>
+                        <li className="menu-item fw-bold" onClick={() => { setCurrentPage('auth'); setIsUserOpen(false); }}>
                           <i className="bi bi-person-plus"></i> {t('register')}
                         </li>
                       </>
@@ -277,14 +267,12 @@ function Navbar({
                 )}
               </div>
 
-              {/* Shopping Cart Indicator */}
               <div className="cart-indicator">
                 <i className="bi bi-bag icon-btn"></i>
               </div>
 
-              {/* Favorites Badge */}
               <div className="favorites-indicator">
-                <a href="#favorites" onClick={(e) => { e.preventDefault(); setActiveFilter('All'); }}>
+                <a href="#favorites" onClick={(e) => { e.preventDefault(); setActiveFilter('All'); setCurrentPage('home'); }}>
                   <i className="bi bi-heart icon-btn"></i>
                 </a>
                 <span className="badge">{favoritesCount}</span>
@@ -302,18 +290,18 @@ function Navbar({
             <button
               key={item.category}
               className={`sub-nav-item-laravel ${activeFilter === item.category ? 'active' : ''}`}
-              onClick={() => setActiveFilter(item.category)}
+              onClick={() => { setActiveFilter(item.category); setCurrentPage('home'); }}
             >
               <i className={`bi bi-${item.icon} me-2`}></i>
               <span>{t(item.title)}</span>
             </button>
           ))}
 
-          {/* {marketCategories.map((mCat) => (
+          {marketCategories.map((mCat) => (
             <button
               key={mCat.category}
               className={`sub-nav-item-laravel ${activeFilter === mCat.category ? 'active' : ''}`}
-              onClick={() => setActiveFilter(mCat.category)}
+              onClick={() => { setActiveFilter(mCat.category); setCurrentPage('home'); }}
             >
               {mCat.isSpecial ? (
                 <div className="special-icon-badge">
@@ -324,9 +312,9 @@ function Navbar({
               )}
               <span>{t(mCat.title)}</span>
             </button>
-          ))} */}
+          ))}
 
-          <button className="sub-nav-item-laravel" onClick={() => setActiveFilter('All')}>
+          <button className="sub-nav-item-laravel" onClick={() => { setActiveFilter('All'); setCurrentPage('home'); }}>
             <i className="bi bi-newspaper me-2"></i>
             <span>{t('messages.News')}</span>
           </button>
@@ -335,7 +323,7 @@ function Navbar({
 
       {/* 4. MOBILE BOTTOM STICKY BAR */}
       <div className="mobile-bottom-bar">
-        <button className="mobile-bar-item" onClick={() => setActiveFilter('All')}>
+        <button className="mobile-bar-item" onClick={() => { setActiveFilter('All'); setCurrentPage('home'); }}>
           <i className="bi bi-house-door"></i>
           <span>{t('home_page')}</span>
         </button>
@@ -347,7 +335,7 @@ function Navbar({
           <i className="bi bi-bag"></i>
           <span>{t('cart')}</span>
         </button>
-        <button className="mobile-bar-item">
+        <button className="mobile-bar-item" onClick={() => { setCurrentPage('home'); }}>
           <i className="bi bi-heart"></i>
           <span>{favoritesCount}</span>
         </button>
@@ -358,7 +346,7 @@ function Navbar({
         onClose={() => setIsMobileModalOpen(false)}
         navItems={navItems}
         marketCategories={marketCategories}
-        onCategorySelect={setActiveFilter}
+        onCategorySelect={(cat) => { setActiveFilter(cat); setCurrentPage('home'); }}
       />
     </div>
   );

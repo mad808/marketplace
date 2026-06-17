@@ -37,5 +37,11 @@ export const tk = {
     "messages.Phone": "Telefon",
     "messages.Email": "E-poçta",
     "messages.Address": "Salgy",
-    "messages.DefaultFooterText": "Ulaglary, harytlary, dükanlary we sargytlary aňsat gurnamaga ýardam berýän söwda meýdançasy."
+    "messages.DefaultFooterText": "Ulaglary, harytlary, dükanlary we sargytlary aňsat gurnamaga ýardam berýän söwda meýdançasy.",
+    "messages.FirstName": "Adyňyz",
+    "messages.LastName": "Familiýaňyz",
+    "messages.PhoneOrEmail": "Telefon ýa-da e-poçta",
+    "messages.Password": "Parol",
+    "messages.ConfirmPassword": "Paroly tassyklaň",
+    "messages.RememberMe": "Meni ýatda sakla"
 };
