@@ -27,7 +27,7 @@ function PromoBanner() {
 
                 {/* Floating controls in the top-right corner */}
                 <div className="promo-indicators">
-                    <span className="promo-page-num">1</span>
+                    {/* <span className="promo-page-num">1</span> */}
                     <button className="promo-close-circle" onClick={() => handleClose(false)}>✕</button>
                 </div>
 
